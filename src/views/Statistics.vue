@@ -1,11 +1,7 @@
-import Statistics from '@/views/Statistics.vue';
-<template>
-    <div class="nav-wrapper">
-        <div class="content">
-            Statistics.vue
-        </div>
-        <Nav/>
-    </div>
+<template>     
+    <Layout>
+        <p>Statistics.vue</p> 
+    </Layout>
 </template>
 
 <script lang="ts">
@@ -16,15 +12,4 @@ import Statistics from '@/views/Statistics.vue';
 </script>
 
 <style lang="scss" scoped>
-.nav-wrapper{
-    border: 1px solid green;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-.content{
-    border: 1px solid blue;
-    flex-grow: 1;
-    overflow: auto;
-}
 </style>
