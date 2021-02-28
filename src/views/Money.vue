@@ -3,50 +3,6 @@ import Money from '@/views/Money.vue';
     <div class="nav-wrapper">
         <div class="content">
             <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-            <p>Money.vue</p> 
-
         </div>
         <Nav/>
     </div>  
