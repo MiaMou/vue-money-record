@@ -13,6 +13,6 @@
   color: #333;
   line-height: 1.5;
   font-family: $font-kai;
+  font-size: 16px;
 }
-
 </style>
