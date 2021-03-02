@@ -1,15 +1,30 @@
 <template>
     <div>
         <ul class="types">
-            <li class="selected">支出</li>
-            <li>收入</li>
+            <li :class="type === '-' && 'selected'" 
+                @click="selectType('-')">支出</li>
+            <li :class="type === '+' && 'selected'"
+                @click="selectType('+')">收入</li>
         </ul>
     </div>
 </template>
 
-<script lang="ts">
+<script>
     export default {
         name: 'Types',
+        data(){        // 保存当前选中的类型
+            return {
+                type: '-'   // '-'表示支出，'+'表示收入
+            }
+        },
+        methods: {      // 切换type的方法
+            selectType(type){     // type只能是'-'和'+'中的一个
+                if(type !== '-' && type !== '+') {
+                    throw new Error('type is unknown')
+                }
+                this.type = type
+            }
+        }
     }
 </script>
 
