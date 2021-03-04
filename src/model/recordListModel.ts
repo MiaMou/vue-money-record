@@ -1,9 +1,9 @@
 const localStorageKeyName = "recordList";
-const model = {
+const recordListModel = {
   fetch() {
     // 获取数据
     return JSON.parse(
-      window.localStorage.getItem(localStorageKeyName) || ""
+      window.localStorage.getItem(localStorageKeyName) || "[]"
     ) as RecordItem[];
   },
   save(data: RecordItem[]) {
@@ -15,4 +15,4 @@ const model = {
   },
 };
 
-export default model;
+export default recordListModel;

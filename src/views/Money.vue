@@ -1,6 +1,5 @@
 <template>    
     <Layout class-prefix="layout"> 
-        {{record}}
         <NumberPad :value.sync="record.amount" @submit="saveRecord" /> 
         <Types :value.sync="record.type" />
         <Notes @update:value="onUpdateNotes" />
@@ -15,19 +14,23 @@
     import Notes from '@/components/Money/Notes.vue';
     import Tags from '@/components/Money/Tags.vue';
     import {Component, Watch} from 'vue-property-decorator';
-    import model from '@/model';
+    import recordListModel from '@/model/recordListModel';
+    import tagListModel from '@/model/tagListModel';
 
-    const version = window.localStorage.getItem('version') || '0';
-    const recordList = model.fetch()
-    if(version === '0.0.1'){
-        // 数据库升级，数据迁移
-        recordList.forEach(record =>{
-            record.createAt = new Date(2020, 0, 1)
-        })
-        // 保存数据
-        window.localStorage.setItem('recordList', JSON.stringify(recordList))
-    }
-    window.localStorage.setItem('version', '0.0.2')
+    const recordList = recordListModel.fetch()  
+    const tagList = tagListModel.fetch()
+    
+
+    // const version = window.localStorage.getItem('version') || '0';
+    // if(version === '0.0.1'){
+    //     // 数据库升级，数据迁移
+    //     recordList.forEach(record =>{
+    //         record.createAt = new Date(2020, 0, 1)
+    //     })
+    //     // 保存数据
+    //     window.localStorage.setItem('recordList', JSON.stringify(recordList))
+    // }
+    // window.localStorage.setItem('version', '0.0.2')
 
     type RecordItem = {
         tags: string[];
@@ -41,26 +44,26 @@
         components: {Tags, Notes, Types, NumberPad}
     })
     export default class Money extends Vue{
-        tags = ['衣','食','住','行','护肤', '彩妆'];
-        recordList: RecordItem[] = recordList
+        tags = tagList;
+        recordList: RecordItem[] = recordList;
         record: RecordItem = {
             tags:[], notes: '', type: '-', amount: 0
         };
         onUpdateTags(value: string[]){
             this.record.tags = value
-        }
+        };
         onUpdateNotes(value: string){
             this.record.notes = value           
-        }   
+        };   
         saveRecord(){
-            const record2: RecordItem = model.clone(this.record)
+            const record2: RecordItem = recordListModel.clone(this.record)
             record2.createAt = new Date()
             this.recordList.push(record2)            
-        }
+        };
         @Watch('recordList')
         onRecordListChange(){
-            model.save(this.recordList)
-        }
+            recordListModel.save(this.recordList)
+        };
     }
 </script>
 
