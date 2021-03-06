@@ -28,7 +28,7 @@
 
 <style lang="scss" scoped>
 .notes {
-    background: #f5f5f5;
+    // background: #f5f5f5;
     display: block;
     font-size: 14px;
     padding-left: 16px;
@@ -38,7 +38,7 @@
         padding-right: 16px;
     }
     input{
-        height: 64px;
+        height: 40px;
         flex-grow: 1;
         background: transparent;
         border: none;
