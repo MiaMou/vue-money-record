@@ -66,9 +66,9 @@ import router from '../router/index';
     padding: 12px 16px;
     background: white;
     position: relative;
-    > .title{
+    // > .title{
 
-    }
+    // }
     > .leftIcon{
         position: absolute;
         left: 16px;
