@@ -7,7 +7,7 @@
                 placeholder="在这里输入备注"
                 @update:value="onUpdateNotes" />
         </div>       
-        <Tags />      
+        <Tags /> 
     </Layout>
 </template>
 
@@ -18,7 +18,7 @@
     import Notes from '@/components/Money/Notes.vue';
     import Tags from '@/components/Money/Tags.vue';
     import {Component} from 'vue-property-decorator';
-    import store from '@/store/index2';
+    import store from '@/store/index';
     
 
     // const version = window.localStorage.getItem('version') || '0';
@@ -34,18 +34,25 @@
 
 
     @Component({
-        components: {Tags, Notes, Types, NumberPad}
+        components: {Tags, Notes, Types, NumberPad},
+        computed: {
+            recordList(){
+                return this.$store.state.recordList;
+            }
+        }
     })
     export default class Money extends Vue{
-        recordList = store.recordList;
         record: RecordItem = {
             tags:[], notes: '', type: '-', amount: 0
         };
+        created(){
+            this.$store.commit('fetchRecords')
+        }
         onUpdateNotes(value: string){
             this.record.notes = value           
         };   
         saveRecord(){
-            store.createRecord(this.record)          
+            this.$store.commit('createRecord',(this.record))         
         };
     }
 </script>
