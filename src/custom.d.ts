@@ -1,15 +1,21 @@
+type RootState = {
+  recordList: RecordItem[];
+  tagList: Tag[];
+  currentTag?: Tag;
+};
 type RecordItem = {
   tags: string[];
   notes: string;
   type: string;
   amount: number;
-  createAt?: Date; // 除了写 基本数据类型 ，还可以写 类
+  createdAt?: string; // 除了写 基本数据类型 ，还可以写 类
 };
 
 type Tag = {
   id: string;
   name: string;
 };
+
 type TagListModel = {
   data: Tag[];
   fetch: () => Tag[];
