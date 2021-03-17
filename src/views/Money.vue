@@ -1,11 +1,17 @@
 <template> 
     <Layout class-prefix="layout"> 
         <NumberPad :value.sync="record.amount" @submit="saveRecord" /> 
-        <Tabs :dataSource="recordTypeList" :value.sync="record.type" />
+        <Tabs :dataSource="recordTypeList" :value.sync="record.type" />    
         <div class="noteswrapper">
             <Notes field-name="备注" 
                 placeholder="在这里输入备注"
                 :value.sync="record.notes" />
+        </div>   
+        <div class="createdAt">
+            <Notes field-name="日期" 
+                type="date"
+                placeholder="在这里输入日期"
+                :value.sync="record.createdAt" />
         </div>       
         <Tags @update:value="record.tags = $event"/> 
     </Layout>
@@ -42,7 +48,7 @@
         }
         recordTypeList = recordTypeList;
         record: RecordItem = {
-            tags:[], notes: '', type: '-', amount: 0
+            tags:[], notes: '', type: '-', amount: 0, createdAt: new Date().toISOString()
         };
         created(){
             this.$store.commit('fetchRecords')
