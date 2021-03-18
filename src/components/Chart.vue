@@ -5,11 +5,11 @@
 <script lang="ts">
     import Vue from 'vue';
     import { Component, Prop, Watch } from 'vue-property-decorator';
-    import echarts, { ECharts, EChartsOption } from 'echarts';
+    import echarts, { ECharts, EChartOption } from 'echarts';
 
     @Component
     export default class Chart extends Vue{
-        @Prop() options?: EChartsOption
+        @Prop() options?: EChartOption
         chart?: ECharts
 
         mounted(){
@@ -20,7 +20,7 @@
             this.chart.setOption(this.options)           
         }
         @Watch('options')
-        onOptionsChange(newValue: EChartsOption){
+        onOptionsChange(newValue: EChartOption){
             this.chart!.setOption(newValue)           
         }           
     }
