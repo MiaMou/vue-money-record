@@ -2,7 +2,7 @@
     <Layout>
         <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
         <div class="chart-wrapper" ref="chartWrapper">
-            <Chart class="chart" :options="x"/>
+            <Chart class="chart" :options="chartOptions"/>
         </div>     
         <ol v-if="groupedList.length>0">
             <li v-for="(group, index) in groupedList" :key="index">
@@ -65,7 +65,7 @@
 
         }
 
-        get y(){
+        get keyValueList(){
             const today = new Date();
             const array = [];
             for(let i=0; i<=29; i++){
@@ -85,9 +85,9 @@
             return array
         }
 
-        get x(){          
-            const keys = this.y.map(item=>item.date);     
-            const values = this.y.map(item=>item.value);            
+        get chartOptions(){          
+            const keys = this.keyValueList.map(item=>item.date);     
+            const values = this.keyValueList.map(item=>item.value);            
 
         return {
             grid: {
@@ -105,7 +105,13 @@
                 lineStyle: {
                     color: "rgba(180, 35, 35, 1)"
                 }
+            },
+            axisLabel: {
+                formatter: function (value: string, index: number) {
+                    return value.substr(5);
+                }
             }
+
 
         },
         yAxis: {
