@@ -13,7 +13,7 @@
                 placeholder="在这里输入日期"
                 :value.sync="record.createdAt" />
         </div>       
-        <Tags @update:value="record.tags = $event"/> 
+        <Tags @update:value="record.tags = $event"/>        
     </Layout>
 </template>
 

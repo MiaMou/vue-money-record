@@ -53,10 +53,6 @@
             const now = dayjs();
             if(day.isSame(now,'day')){
                 return '今天';
-            }else if(day.isSame(now.subtract(1,'day'), 'day')){
-                return '昨天';
-            }else if(day.isSame(now.subtract(2,'day'), 'day')){
-                return '前天';
             }else if(day.isSame(now, 'year')){
                 return day.format('M月D日')
             }else{
@@ -93,6 +89,7 @@
             grid: {
                 left: 0,
                 right: 0,
+                top: 0
             },
         xAxis: {
             type: 'category',
@@ -103,7 +100,7 @@
             },
             axisLine: {
                 lineStyle: {
-                    color: "rgba(180, 35, 35, 1)"
+                    color: "#F08080"
                 }
             },
             axisLabel: {
@@ -118,7 +115,8 @@
         },
         series: [{
             symbolSize: 12,  
-            symbol: 'circle',        
+            symbol: 'circle',   
+            itemStyle: {color: '#F08080'},     
             data: values,
             type: 'line'
         }],

@@ -73,7 +73,7 @@
         button{
             background: transparent;
             border: none;
-            color: #999;
+            color:#F08080;
             border-bottom: 1px solid;
             padding: 0 3px;
         }

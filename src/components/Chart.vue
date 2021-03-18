@@ -28,7 +28,7 @@
 
 <style lang="scss" scoped>
 .wrapper{
-    height: 400px;
+    height: 300px;
 }
 
 </style>
