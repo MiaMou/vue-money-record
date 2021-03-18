@@ -1,7 +1,7 @@
 <template> 
     <Layout>
         <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
-        <!-- <Tabs class-prefix="interval" :data-source="intervalList" :value.sync="interval"/> -->
+        <Chart :options="x"/>
         <ol v-if="groupedList.length>0">
             <li v-for="(group, index) in groupedList" :key="index">
                 <h3 class="title"> {{beautify(group.title)}} <span> ¥{{group.total}} </span></h3>
@@ -29,10 +29,11 @@
     import recordTypeList from '@/constants/recordTypeList';
     import dayjs from 'dayjs';
     import clone from '@/lib/clone';
+    import Chart from '@/components/Chart.vue'
 
 
     @Component({
-        components: {Tabs},
+        components: {Tabs, Chart},
     })
     export default class Statistics extends Vue{
         tagString(tags: Tag[]){
@@ -54,6 +55,32 @@
             }
 
         }
+
+        get x(){
+        return {
+        xAxis: {
+            type: 'category',
+            data: [
+                'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',
+                'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',
+                'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
+            ], 
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [
+                150, 230, 224, 218, 135, 147, 260,
+                150, 230, 224, 218, 135, 147, 260,
+                150, 230, 224, 218, 135, 147, 260
+                ],
+            type: 'line'
+        }],
+        tooltip: {show: true}
+            }
+        }
+
         get recordList() {
             return (this.$store.state as RootState).recordList;
         }
